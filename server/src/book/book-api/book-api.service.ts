@@ -6,6 +6,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -15,6 +16,11 @@ export class BookApiService {
   async getAllBooks(requestBody: any) {
     try {
       let data = [];
+
+      if (!requestBody.searchTerm) {
+        data = await this.prismaService.books.findMany();
+      }
+
       if (requestBody.searchTerm) {
         console.log(requestBody);
         data = await this.prismaService.books.findMany({
@@ -38,16 +44,15 @@ export class BookApiService {
             ],
           },
         });
-      } else if (!requestBody.searchTerm) {
-        data = await this.prismaService.books.findMany();
       }
+
       if (!data) {
         throw new HttpException(
           'Refrence data does not exist, code is wrong',
           HttpStatus.NOT_FOUND,
         );
       }
-      return { data, message: 'Refrence data recived' };
+      return { data, message: 'data recived' };
     } catch (error) {
       throw new BadRequestException('Internal Server Error');
     }
