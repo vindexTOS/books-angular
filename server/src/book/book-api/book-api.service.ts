@@ -15,7 +15,7 @@ export class BookApiService {
   async getAllBooks(requestBody: any) {
     try {
       let data = [];
-      if (requestBody) {
+      if (requestBody.searchTerm) {
         console.log(requestBody);
         data = await this.prismaService.books.findMany({
           where: {
