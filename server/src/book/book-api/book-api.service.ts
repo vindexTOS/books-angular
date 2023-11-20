@@ -38,7 +38,7 @@ export class BookApiService {
             ],
           },
         });
-      } else if (!requestBody) {
+      } else if (!requestBody.searchTerm) {
         data = await this.prismaService.books.findMany();
       }
       if (!data) {
