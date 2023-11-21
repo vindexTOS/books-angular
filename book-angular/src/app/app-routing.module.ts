@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'book/:id',
     component: SingleBookComponent,
   },
+  {
+    path: 'api',
+    component: MainViewAPIComponent,
+  },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
