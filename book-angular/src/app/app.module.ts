@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { StoreModule } from '@ngrx/store'
-import { MainViewAPIComponent } from './main-api-host/components/main-view/main-view.component'
 import { NavbarComponent } from './general-components/navbar/navbar.component'
 import { ErrorComponent } from './general-components/error/error.component'
 import { SuccsessComponent } from './general-components/succsess/succsess.component'
@@ -29,6 +28,7 @@ import { AddBookApiComponent } from './main-api-host/components/add-book-api/add
 import { EffectsModule } from '@ngrx/effects'
 import { ApiReducer } from './Store/ApiHanndle/Api.reducer'
 import { APIEffect } from './Store/ApiHanndle/Api.effect'
+import { MainViewAPIComponent } from './main-api-host/components/main-view-api/main-view-api.component'
 @NgModule({
   declarations: [
     AppComponent,

@@ -59,39 +59,50 @@ export class BookApiService {
   }
 
   async getOneBook(id: string) {
-    return this.prismaService.books.findUnique({
-      where: { id },
-    });
+    try {
+      return this.prismaService.books.findUnique({
+        where: { id },
+      });
+    } catch (error) {
+      throw new BadRequestException('Internal Server Error');
+    }
   }
 
   async createBook(data: any) {
-    const existingBook = await this.prismaService.books.findFirst({
-      where: { title: data.title } as any,
-    });
+    try {
+      const existingBook = await this.prismaService.books.findFirst({
+        where: { title: data.title } as any,
+      });
 
-    if (existingBook) {
-      throw new ConflictException(
-        `Book with title '${data.title}' already exists`,
-      );
+      if (existingBook) {
+        throw new ConflictException(
+          `Book with title '${data.title}' already exists`,
+        );
+      }
+
+      return this.prismaService.books.create({
+        data,
+      });
+    } catch (error) {
+      throw new BadRequestException('Internal Server Error');
     }
-
-    // If no existing book, create a new one
-    return this.prismaService.books.create({
-      data,
-    });
   }
 
   async deleteBook(id: string): Promise<void> {
-    const book = await this.prismaService.books.findUnique({
-      where: { id },
-    });
+    try {
+      const book = await this.prismaService.books.findUnique({
+        where: { id },
+      });
 
-    if (!book) {
-      throw new NotFoundException(`Book with ID ${id} not found`);
+      if (!book) {
+        throw new NotFoundException(`Book with ID ${id} not found`);
+      }
+
+      await this.prismaService.books.delete({
+        where: { id },
+      });
+    } catch (error) {
+      throw new BadRequestException('Internal Server Error');
     }
-
-    await this.prismaService.books.delete({
-      where: { id },
-    });
   }
 }
