@@ -19,8 +19,8 @@ This is a simple book library app with basic CRUD operations initially built on 
 ## Technologies Used
 
 - Frontend: Angular
--State Manager:Ngrx
--Style: TailwindCss
+- State Manager:Ngrx
+- Style: TailwindCss
 - Backend: NestJS
 
 ## Usage
