@@ -47,10 +47,12 @@ export class BookApiService {
       }
 
       if (!data) {
-        throw new HttpException(
-          'Refrence data does not exist, code is wrong',
-          HttpStatus.NOT_FOUND,
-        );
+        throw new ConflictException({
+          message: 'it does not exists',
+
+          error: 'Bad Request',
+          statusCode: 400,
+        });
       }
       return { data, message: 'data recived' };
     } catch (error) {
@@ -75,9 +77,11 @@ export class BookApiService {
       });
 
       if (existingBook) {
-        throw new ConflictException(
-          `Book with title '${data.title}' already exists`,
-        );
+        throw new ConflictException({
+          message: `Book with title '${data.title}' already exists`,
+          error: 'Bad Request',
+          statusCode: 400,
+        });
       }
 
       return this.prismaService.books.create({
