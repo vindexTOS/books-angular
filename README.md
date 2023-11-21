@@ -14,7 +14,6 @@ This is a simple book library app with basic CRUD operations initially built on 
 
 - View a list of books
 - Add a new book
-- Edit existing book details
 - Delete a book from the library
 
 ## Technologies Used
@@ -30,16 +29,12 @@ This is a simple book library app with basic CRUD operations initially built on 
 
 1. Visit the hosted application on [Live WebSite](https://book-angular-t67b.onrender.com).
 2. Explore and interact with the book library.
+3. Clone the repo and npm install on book-angular directoriy 
+5. Ng version should be less then 17
+6. IGNOR server folder 
 
-### Backend (Cyclic)
 
-**Warning:** The backend server is already hosted; there is no need to install the server file.
-
-If you are interested in exploring or modifying the backend:
-
-1. Access the backend server hosted on  Cyclic 
-2. No need to install or run the server locally; it's already hosted for you.
-
+ 
  
  
  
