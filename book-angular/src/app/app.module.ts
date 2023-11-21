@@ -17,6 +17,16 @@ import { BookCardComponent } from './main-local-host/components/book-card/book-c
 
 import { RouterModule } from '@angular/router'
 import { SingleBookComponent } from './main-local-host/components/single-book/single-book.component'
+import { LocalStorageReducer } from './Store/LocalStorage/Local.reducer'
+import { DialogComponent } from './general-components/dialog/dialog.component'
+import { TopBarComponent } from './main-local-host/components/top-bar/top-bar.component'
+import { AddBookComponent } from './main-local-host/components/add-book/add-book.component'
+import { FormsModule } from '@angular/forms';
+import { SingleBookApiComponent } from './main-api-host/components/single-book-api/single-book-api.component';
+import { BookCardApiComponent } from './main-api-host/components/book-card-api/book-card-api.component';
+import { TopBarApiComponent } from './main-api-host/components/top-bar-api/top-bar-api.component';
+import { AddBookApiComponent } from './main-api-host/components/add-book-api/add-book-api.component';
+import { EffectsModule } from '@ngrx/effects'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +38,26 @@ import { SingleBookComponent } from './main-local-host/components/single-book/si
     LoadingComponent,
     BookCardComponent,
     SingleBookComponent,
+    DialogComponent,
+    TopBarComponent,
+    AddBookComponent,
+    SingleBookApiComponent,
+    BookCardApiComponent,
+    TopBarApiComponent,
+    AddBookApiComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     RouterModule,
     StoreModule.forRoot({
       statusselector: StatusReducer,
+      localstorageselector: LocalStorageReducer,
     }),
     HttpClientModule,
     CommonModule,
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

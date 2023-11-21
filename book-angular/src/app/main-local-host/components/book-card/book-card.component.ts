@@ -17,6 +17,7 @@ export class BookCardComponent {
   @Input() author: string = ''
   @Input() id: string = ''
   openOptions: boolean = false
+  dialog: boolean = false
   navigateToSingleBook(): void {
     this.router.navigate(['/book', this.id])
     console.log(this.id)
@@ -26,7 +27,22 @@ export class BookCardComponent {
     this.openOptions = !this.openOptions
   }
 
+  openDialog() {
+    this.dialog = true
+  }
+
   deletItem() {
     this.localStorageService.deletItem(this.id)
+  }
+
+  onDialogAction(actionType: string) {
+    if (actionType === 'delete') {
+      this.deletItem()
+      console.log('Delete action')
+    } else if (actionType === 'cancel') {
+      this.dialog = false
+    }
+
+    this.dialog = false
   }
 }
