@@ -1,0 +1,91 @@
+<div
+  (mousedown)="onOverlayClick($event)"
+  class="fixed inset-0 bg-black bg-opacity-20 z-50"
+  *ngIf="isOpen"
+>
+  <div
+    (click)="onInnerDivClick($event)"
+    class="fixed inset-y-0 right-0 max-w-xs w-full bg-white p-4 shadow-lg"
+  >
+    <h2 class="text-2xl font-bold mb-4">Add New Book</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="title" class="block text-sm font-medium text-gray-600">
+          Title
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="book.title"
+          class="mt-1 p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="author" class="block text-sm font-medium text-gray-600">
+          Author
+        </label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          [(ngModel)]="book.author"
+          class="mt-1 p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          for="description"
+          class="block text-sm font-medium text-gray-600"
+        >
+          Description
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="book.description"
+          class="mt-1 p-2 border border-gray-300 rounded w-full"
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="image" class="block text-sm font-medium text-gray-600">
+          Image URL
+        </label>
+        <input
+          type="text"
+          id="image"
+          name="image"
+          [(ngModel)]="book.image"
+          class="mt-1 p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          for="releaseYear"
+          class="block text-sm font-medium text-gray-600"
+        >
+          Release Year
+        </label>
+        <input
+          type="number"
+          id="releaseYear"
+          name="releaseYear"
+          [(ngModel)]="book.releaseYear"
+          class="mt-1 p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="px-4 py-2 mr-2 bg-gray-300 text-gray-700 rounded"
+          (click)="onClose()"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded">
+          Add Book
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

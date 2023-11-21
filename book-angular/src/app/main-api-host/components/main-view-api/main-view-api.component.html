@@ -1,0 +1,26 @@
+<app-top-bar-api
+  (addNewBook)="openDrawer()"
+  (searchQueryChange)="onSearchQueryChange($event)"
+  (search)="sendSearchRequest()"
+></app-top-bar-api>
+<app-add-book-api
+  [isOpen]="isDrawerOpen"
+  (closeDrawer)="closeDrawer()"
+  (addBook)="onAddBook($event)"
+></app-add-book-api>
+<section class="flex items-center justify-center w-[100%] pt-2 p-2">
+  <div class="flex flex-col justify-center items-center gap-2 pt-10 w-[100%]">
+    <div
+      *ngFor="let book of books"
+      class="w-[85%] hover:bg-gray-100 cursor-pointer max_sm:flex max_sm:items-center max_sm:justify-center max_sm:w-[200px] bg-white rounded-xl shadow-md overflow-hidden"
+    >
+      <app-book-card-api
+        [title]="book.title"
+        [author]="book.author"
+        [image]="book.image"
+        [id]="book.id"
+      ></app-book-card-api>
+    </div>
+    <div *ngIf="books && books.length === 0">No Books Available</div>
+  </div>
+</section>

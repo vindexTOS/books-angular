@@ -1,0 +1,42 @@
+<div class="md:flex relative">
+  <div class="md:flex-shrink-0">
+    <img
+      (click)="navigateToSingleBook()"
+      class="h-48 w-full object-cover md:w-48"
+      [src]="image"
+      alt="Book cover"
+    />
+  </div>
+  <div class="p-8">
+    <div
+      (click)="navigateToSingleBook()"
+      class="uppercase tracking-wide text-sm text-indigo-500 font-semibold hover:underline"
+    >
+      {{ title }}
+    </div>
+    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black">
+      {{ author }}
+    </a>
+  </div>
+  <img
+    (click)="onOpenOptions()"
+    class="h-[19px] w-[20px] absolute right-1 top-5"
+    src="../../../../assets/icons/dotts.png"
+  />
+  <div
+    *ngIf="openOptions"
+    class="absolute w-[200px] h-[80px] items-center bg-gray-100 shadow-md top-10 right-3 flex flex-col py-1 px-2 rounded-[6px]"
+  >
+    <button
+      (click)="openDialog()"
+      class="w-full py-2 px-4 mt-2 bg-red-500 text-white hover:bg-red-600 rounded-[6px]"
+    >
+      Delete
+    </button>
+  </div>
+</div>
+<app-dialog
+  *ngIf="dialog"
+  [title]="title"
+  (action)="onDialogAction($event)"
+></app-dialog>

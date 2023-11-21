@@ -3,13 +3,21 @@
     <div class="space-x-4">
       <button
         (click)="navigate('/')"
-        class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full"
+        [class.bg-green-500]="routeName === '/'"
+        [class.hover:bg-green-600]="routeName === '/'"
+        [class.bg-blue-500]="routeName !== '/'"
+        [class.hover:bg-green-600]="routeName !== '/'"
+        class="text-white px-6 py-3 rounded-full"
       >
         LOCAL HOST
       </button>
       <button
         (click)="navigate('/api')"
-        class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
+        [class.bg-green-500]="routeName === '/api'"
+        [class.bg-green-600]="routeName === '/api'"
+        [class.bg-blue-500]="routeName !== '/api'"
+        [class.hover:bg-green-600]="routeName === '/'"
+        class="text-white px-6 py-3 rounded-full"
       >
         EXTERNAL API
       </button>

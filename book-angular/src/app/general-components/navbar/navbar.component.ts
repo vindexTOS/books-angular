@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
-import { Router } from '@angular/router'
+import { Router, NavigationEnd } from '@angular/router'
+import { Subject, filter } from 'rxjs'
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +8,23 @@ import { Router } from '@angular/router'
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  routeName = ''
   constructor(private router: Router) {}
+  private destroy$ = new Subject<void>()
+
+  ngOnInit() {
+    this.routeName = this.router.url
+    console.log(this.routeName)
+  }
+
   navigate(link: string) {
-    this.router.navigate([`${link}`])
+    this.router.navigate([link]).then(() => {
+      this.ngOnInit()
+    })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 }
