@@ -24,8 +24,13 @@ This is a simple book library app with basic CRUD operations initially built on 
 - Backend: NestJS
 
 ## Usage
+## Directories
+- There are two main folders in the app directory: main-api-host and main-local-host. The functionality of api-host is based on HTTP requests, while the functionality of local-host is based on the local host.
+- The store folder is for NGRX actions, reducers, selectors, and effects.
+- The general-components folder is for reusable components.
+- env.ts contains the API link.
 
-### Frontend (Render)
+### Frontend  
 
 
 
