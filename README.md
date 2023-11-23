@@ -5,7 +5,7 @@
 
 This is a simple book library app with basic CRUD operations initially built on local storage. To make it more challenging, a server was added, and the app now connects to an API implemented with NestJS.
   
-- Front end is hosted on [Render](https://book-angular-t67b.onrender.com)
+- Front end is hosted on  Render [Live WebSIte](https://book-angular-t67b.onrender.com)
 - Back end server is hosted on Render and is accsasable in env.ts on app dir 
 
 **Note: No need to install the server file; the backend is already hosted.**
